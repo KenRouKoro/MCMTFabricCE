@@ -30,3 +30,7 @@ This project is very easy to conflict with other fabricmod. You have been warned
 | AE2                      | Fully compatible 完全兼容         |
 | Modern-Industrialization | Fully compatible 完全兼容         |
 | REI                      | Fully compatible 完全兼容         |
+
+This project will not be the forge version again.
+
+这个项目不会有forge分支。
