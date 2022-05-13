@@ -17,16 +17,16 @@ public class ConcurrentLongLinkedOpenHashSet extends LongLinkedOpenHashSet {
 
     private static final long serialVersionUID = -5532128240738069111L;
 
-    private final ConcurrentSkipListSet<Long> backing;
+    private final ConcurrentSkipListSet<Long> backing= new ConcurrentSkipListSet<Long>();
 
     public ConcurrentLongLinkedOpenHashSet() {
         //backing = new ConcurrentLinkedDeque<Long>();
-        backing = new ConcurrentSkipListSet<Long>();
+        //backing = new ConcurrentSkipListSet<Long>();
     }
 
     public ConcurrentLongLinkedOpenHashSet(final int initial) {
         //backing = new ConcurrentLinkedDeque<Long>();
-        backing = new ConcurrentSkipListSet<Long>();
+        //backing = new ConcurrentSkipListSet<Long>();
     }
 
     public ConcurrentLongLinkedOpenHashSet(final int initial, final float dnc) {

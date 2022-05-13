@@ -194,7 +194,7 @@ public class StatsCommand {
 
                         warnLog++;
                         if (warnLog % warningDelay == 0) {
-                            mtlog.warn("MCMT is installed; error logs are likely invalid for any other mods");
+                            mtlog.warn("MCMT is installed; error logs are likely invalid for any other mods. / 由于安装了MCMT,错误日志可能对其他mod没有帮助.");
                             warningDelay *= 1.2;
                             warningDelay = Math.min(warningDelay, Math.max(config.logCap, 15000)); // Max delay ~~ 2 hours
                         }

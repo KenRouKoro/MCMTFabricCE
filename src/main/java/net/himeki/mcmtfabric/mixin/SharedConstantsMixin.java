@@ -7,5 +7,5 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(SharedConstants.class)
 public abstract class SharedConstantsMixin {
     @Shadow
-    public static boolean isDevelopment = true;
+    public static boolean isDevelopment = false;
 }

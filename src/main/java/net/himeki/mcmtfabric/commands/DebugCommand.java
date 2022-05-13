@@ -11,11 +11,13 @@ import net.minecraft.server.command.LocateCommand;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.tag.TagKey;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.chunk.BlockEntityTickInvoker;
+import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.gen.feature.StructureFeature;
 
 import java.io.File;
@@ -121,29 +123,30 @@ public class DebugCommand {
                 /* 1.16.1 code; AKA the only thing that changed  */
                 .then(literal("test").requires(cmdSrc -> {
                     return cmdSrc.hasPermissionLevel(2);
-                }).then(literal("structures").executes(cmdCtx -> {
+                })/*.then(literal("structures").executes(cmdCtx -> {
                     ServerPlayerEntity p = cmdCtx.getSource().getPlayer();
                     BlockPos srcPos = p.getBlockPos();
                     UUID id = PlayerEntity.getUuidFromProfile(p.getGameProfile());
                     int index = structureIdx.computeIfAbsent(id.toString(), (s) -> new AtomicInteger()).getAndIncrement();
-                    StructureFeature<?>[] targets = Registry.STRUCTURE_FEATURE.getEntries().toArray(new StructureFeature<?>[10]);
-                    StructureFeature<?> target = null;
+                    TagKey<?>[] targets = Registry.STRUCTURE_FEATURE.getEntrySet().toArray(new TagKey<?>[10]);//getEntries().toArray(new StructureFeature<?>[10]);
+                    TagKey<?> target = null;
                     if (index >= targets.length) {
                         target = targets[0];
                         structureIdx.computeIfAbsent(id.toString(), (s) -> new AtomicInteger()).set(0);
                     } else {
                         target = targets[index];
                     }
-                    BlockPos dst = cmdCtx.getSource().getWorld().locateStructure(target, srcPos, 100, false);
+                    BlockPos dst = cmdCtx.getSource().getWorld().locateStructure((TagKey<ConfiguredStructureFeature<?, ?>>) target, srcPos, 100, false);
                     if (dst == null) {
-                        LiteralText message = new LiteralText("Failed locating " + target.getName() + " from " + srcPos);
+                        LiteralText message = new LiteralText("Failed locating " + target.toString() + " from " + srcPos);
                         cmdCtx.getSource().sendFeedback(message, true);
                         return 1;
                     }
                     p.teleport(dst.getX(), srcPos.getY(), dst.getZ());
                     LocateCommand.sendCoordinates(cmdCtx.getSource(), target.getName(), srcPos, dst, "commands.locate.success");
                     return 1;
-                })))
+                }))*/
+                )
                 /* */
 				/*
 				.then(literal("goinf").requires(cmdSrc -> {

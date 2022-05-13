@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.BooleanSupplier;
 
-@Mixin(MinecraftServer.class)
+@Mixin(value = MinecraftServer.class,priority = 2147483647)
 public abstract class MinecraftServerMixin extends ReentrantThreadExecutor<ServerTask> implements CommandOutput, AutoCloseable {
     @Shadow
     public abstract ServerWorld getOverworld();
@@ -52,6 +52,11 @@ public abstract class MinecraftServerMixin extends ReentrantThreadExecutor<Serve
             return 441;
         int loaded = this.getOverworld().getChunkManager().getLoadedChunkCount();
         return Math.min(loaded, 441); // Maybe because multi loading caused overflow
+    }
+
+    @Override
+    public boolean isOnThread(){
+        return ParallelProcessor.serverExecutionThreadPatch((MinecraftServer)(Object)this)||(Thread.currentThread() == ((MinecraftServer)(Object)this).getThread());
     }
 
 }

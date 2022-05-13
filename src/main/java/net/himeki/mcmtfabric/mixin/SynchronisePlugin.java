@@ -90,5 +90,6 @@ public class SynchronisePlugin implements IMixinConfigPlugin {
             }
 
         }
+
     }
 }

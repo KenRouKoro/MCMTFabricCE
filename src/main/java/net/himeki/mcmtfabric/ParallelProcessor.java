@@ -123,7 +123,11 @@ public class ParallelProcessor {
                 try {
                     currentWorlds.incrementAndGet();
                     serverworld.tick(hasTimeLeft);
-                } finally {
+                }catch (Exception e){
+                    String eMessage = e.getMessage();
+                    LOGGER.error("MCMT捕捉到在 世界Tick线程:"+Thread.currentThread().getName()+" 抛出异常:"+eMessage);
+                    throw e;
+                }finally {
                     p.arriveAndDeregister();
                     currentWorlds.decrementAndGet();
                     if (config.opsTracing) currentTasks.remove(finalTaskName);
@@ -180,7 +184,13 @@ public class ParallelProcessor {
                 if (filter != null) {
                     filter.serialise(entityIn::tick, entityIn, entityIn.getBlockPos(), serverworld, SerDesHookTypes.EntityTick);
                 } else {
-                    entityIn.tick();
+                    try {
+                        entityIn.tick();
+                    }catch (Exception e){
+                        String eMessage = e.getMessage();
+                        LOGGER.error("MCMT捕捉到在 生物Tick线程:"+Thread.currentThread().getName()+" 抛出异常:"+eMessage);
+                        throw e;
+                    }
                 }
             } finally {
                 currentEnts.decrementAndGet();
