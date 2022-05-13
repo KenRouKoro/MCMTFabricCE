@@ -8,7 +8,7 @@ This project is in its earlier stage. Any contribution to the original author is
 
 这个项目还处于早期编写阶段，欢迎给原作者赞助。
 
-#Compatibility Warning
+# Compatibility Warning
 This project is very easy to conflict with other fabricmod. You have been warned.
 
 本项目极易与其他FabricMod冲突，您已经被警告过了。
