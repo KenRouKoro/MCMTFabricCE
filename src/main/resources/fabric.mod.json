@@ -1,18 +1,19 @@
 {
   "schemaVersion": 1,
-  "id": "mcmtfabric",
+  "id": "mcmtce",
   "version": "${version}",
-  "name": "MCMTFabric",
-  "description": "A fabric port of MCMT.",
+  "name": "MCMTCE",
+  "description": "A compatibility enhancement port of MCMTFabric.",
   "authors": [
-    "Grider"
+    "Grider",
+    "Koro"
   ],
   "contact": {
-    "homepage": "",
-    "sources": "https://github.com/himekifee/MCMTFabric"
+    "homepage": "https://github.com/KenRouKoro/MCMTFabricCE",
+    "sources": "https://github.com/KenRouKoro/MCMTFabricCE"
   },
   "license": "GPLv3",
-  "icon": "assets/mcmtfabric/mcmt.png",
+  "icon": "assets/mcmtce/mcmtce.png",
   "environment": "*",
   "entrypoints": {
     "preLaunch": [
@@ -30,7 +31,7 @@
     "fabricloader": ">=0.11.3",
     "fabric": "*",
     "minecraft": "1.18.x",
-    "java": ">=16",
+    "java": ">=17",
     "cloth-config2": ">=5.0.34"
   },
   "suggests": {
