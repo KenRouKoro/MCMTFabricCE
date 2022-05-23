@@ -13,10 +13,7 @@ import net.minecraft.world.chunk.ChunkStatus;
 import net.minecraft.world.chunk.WorldChunk;
 import org.jetbrains.annotations.Nullable;
 import org.objectweb.asm.Opcodes;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -34,19 +31,24 @@ public abstract class ServerChunkManagerMixin extends ChunkManager {
 
     @Shadow
     @Final
+    @Mutable
     public ServerChunkManager.MainThreadExecutor mainThreadExecutor;
 
     @Shadow
     @Final
+    @Mutable
     private ChunkStatus[] chunkStatusCache;
     @Shadow
     @Final
+    @Mutable
     private long[] chunkPosCache;
     @Shadow
     @Final
+    @Mutable
     private  Chunk[] chunkCache;
     @Shadow
     @Final
+    @Mutable
     ServerWorld world;
 
 

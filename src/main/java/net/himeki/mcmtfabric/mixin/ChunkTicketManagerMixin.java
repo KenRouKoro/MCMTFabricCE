@@ -11,6 +11,7 @@ import net.minecraft.server.world.ChunkTicketManager;
 import net.minecraft.util.collection.SortedArraySet;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.Set;
@@ -20,9 +21,11 @@ public abstract class ChunkTicketManagerMixin {
 
     @Shadow
     @Final
-    final Set<ChunkHolder> chunkHolders = ConcurrentCollections.newHashSet();
+    @Mutable
+    private Set<ChunkHolder> chunkHolders = ConcurrentCollections.newHashSet();
 
     @Shadow
     @Final
-    final LongSet chunkPositions = new ConcurrentLongLinkedOpenHashSet();
+    @Mutable
+    private LongSet chunkPositions = new ConcurrentLongLinkedOpenHashSet();
 }
