@@ -39,7 +39,7 @@ dependencies {
     compileOnly "appeng:appliedenergistics2:11.0.0-alpha.5"
     //compile fileTree(dir:'lib',includes:['*jar'])
 
-    implementation fileTree(dir:'lib',includes:['*jar'])
+    //implementation fileTree(dir:'lib',includes:['*jar'])
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"

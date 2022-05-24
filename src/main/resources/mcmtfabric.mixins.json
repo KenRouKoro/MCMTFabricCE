@@ -23,9 +23,7 @@
     "UtilMixin",
     "WorldMixin",
     "WorldTickSchedulerMixin",
-    "ae2.PlatformMixin",
-    "tech.CableBlockEntityMixin",
-    "tech.CableTickManagerMixin"
+    "ae2.PlatformMixin"
   ],
   "client": [
   ],

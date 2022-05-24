@@ -9,6 +9,7 @@ import net.himeki.mcmtfabric.MCMT;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Config(name = "mcmtfabric")
 public class GeneralConfig implements ConfigData {
@@ -59,19 +60,19 @@ public class GeneralConfig implements ConfigData {
             This will occur even when chunkLockModded is set to true
             Adding pistons to this will not parallelise them"""
     )
-    public List<String> teWhiteListString = new ArrayList<>();
+    public List<String> teWhiteListString = new CopyOnWriteArrayList<>();
 
     @Comment("List of tile entity classes that will always be chunklocked\n"
             + "This will occur even when chunkLockModded is set to false")
-    public List<String> teBlackListString = new ArrayList<>();
+    public List<String> teBlackListString = new CopyOnWriteArrayList<>();
 
     // Any TE class strings that aren't available in the current environment
     // We use classes for the main operation as class-class comparisons are memhash based
     // So (should) be MUCH faster than string-string comparisons
     @ConfigEntry.Gui.Excluded
-    public List<String> teUnfoundWhiteList = new ArrayList<>();
+    public List<String> teUnfoundWhiteList = new CopyOnWriteArrayList<>();
     @ConfigEntry.Gui.Excluded
-    public List<String> teUnfoundBlackList = new ArrayList<>();
+    public List<String> teUnfoundBlackList = new CopyOnWriteArrayList<>();
 
     // Misc
     @Comment("Disable environment (plant ticks, etc.) parallelisation")

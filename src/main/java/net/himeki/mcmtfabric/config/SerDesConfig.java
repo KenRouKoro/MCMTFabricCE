@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -197,8 +198,8 @@ public class SerDesConfig {
         String file = fc.getNioPath().getFileName().toString();
         List<Config> pool = fc.get("pools");
         List<Config> filter = fc.get("filters");
-        if (pool == null) pool = new ArrayList<Config>();
-        if (filter == null) filter = new ArrayList<Config>();
+        if (pool == null) pool = new CopyOnWriteArrayList<>();
+        if (filter == null) filter = new CopyOnWriteArrayList<>();
         filters.put(file, filter.stream()
                 .map(c -> OBJECT_CONVERTER.toObject(c, FilterConfig::new))
                 .collect(Collectors.toList()));

@@ -85,7 +85,7 @@ public class ParallelProcessor {
 
     public static void preTick(MinecraftServer server) {
         if (p != null) {
-            LOGGER.warn("Multiple servers?");
+            LOGGER.warn("多个服务器?什么鬼！");
             return;
         } else {
             tickStart = System.nanoTime();
@@ -107,7 +107,7 @@ public class ParallelProcessor {
             return;
         }
         if (mcs != server) {
-            LOGGER.warn("Multiple servers?");
+            LOGGER.warn("多个服务器?什么鬼！");
             config.disabled = true;
             serverworld.tick(hasTimeLeft);
             return;
@@ -125,8 +125,8 @@ public class ParallelProcessor {
                     serverworld.tick(hasTimeLeft);
                 }catch (Exception e){
                     String eMessage = e.getMessage();
-                    LOGGER.error("MCMT捕捉到在 世界Tick线程:"+Thread.currentThread().getName()+" 抛出异常:"+eMessage);
-                    throw e;
+                    LOGGER.error("MCMT捕捉到在 世界Tick线程:"+Thread.currentThread().getName()+" 抛出异常:"+e.getClass().getName()+":"+eMessage);
+                    //throw e;
                 }finally {
                     p.arriveAndDeregister();
                     currentWorlds.decrementAndGet();
@@ -143,7 +143,7 @@ public class ParallelProcessor {
 
     public static void postTick(MinecraftServer server) {
         if (mcs != server) {
-            LOGGER.warn("Multiple servers?");
+            LOGGER.warn("多个服务器?什么鬼！");
             return;
         } else {
             p.arriveAndAwaitAdvance();
@@ -188,8 +188,8 @@ public class ParallelProcessor {
                         entityIn.tick();
                     }catch (Exception e){
                         String eMessage = e.getMessage();
-                        LOGGER.error("MCMT捕捉到在 生物Tick线程:"+Thread.currentThread().getName()+" 抛出异常:"+eMessage);
-                        throw e;
+                        LOGGER.error("MCMT捕捉到在 实体Tick线程:"+Thread.currentThread().getName()+" 抛出异常:"+e.getClass().getName()+":"+eMessage);
+                        //throw e;
                     }
                 }
             } finally {

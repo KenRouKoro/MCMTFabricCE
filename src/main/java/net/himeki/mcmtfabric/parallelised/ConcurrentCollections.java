@@ -26,7 +26,7 @@ public class ConcurrentCollections {
 
     public static <T> List<T> newLinkedList() {
         LOGGER.info("Concurrent \"linked\" list created");
-        return new CopyOnWriteArrayList<T>();
+        return Collections.synchronizedList(new CopyOnWriteArrayList<>());
     }
 
     public static <T> Collector<T, ?, List<T>> toList() {

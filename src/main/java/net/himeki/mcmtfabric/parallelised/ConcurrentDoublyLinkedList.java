@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.commons.lang3.NotImplementedException;
@@ -135,8 +136,8 @@ public class ConcurrentDoublyLinkedList<E> extends AbstractCollection<E> impleme
      *
      * @return the arrayList
      */
-    private ArrayList<E> toArrayList() {
-        ArrayList<E> c = new ArrayList<E>();
+    private List<E> toArrayList() {
+        CopyOnWriteArrayList<E> c =new CopyOnWriteArrayList<E>();
         for (Node<E> n = header.forward(); n != null; n = n.forward())
             c.add(n.element);
         return c;

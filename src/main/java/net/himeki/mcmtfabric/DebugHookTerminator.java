@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
@@ -65,7 +66,7 @@ public class DebugHookTerminator {
 
     }
 
-    public static List<BrokenChunkLocator> breaks = new ArrayList<>();
+    public static List<BrokenChunkLocator> breaks = new CopyOnWriteArrayList<>();
 
     public static boolean isBypassLoadTarget() {
         return bypassLoadTarget;

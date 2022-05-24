@@ -3,10 +3,7 @@ package net.himeki.mcmtfabric.parallelised.pooling;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.AbstractExecutorService;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.LockSupport;
 
@@ -68,7 +65,7 @@ public class LockAwareThreadPool extends AbstractExecutorService {
         // Prevent any new tasks from being fetched
         shutdown();
         // Get all tasks from task queue that haven't been executed yet
-        List<Runnable> out =  new ArrayList<Runnable>(taskQueue);
+        List<Runnable> out =  new CopyOnWriteArrayList<>(taskQueue);
         // Empty task queue
         taskQueue.clear();
         // Return result

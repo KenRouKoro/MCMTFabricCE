@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -39,12 +40,12 @@ public class SerDesRegistry {
     static Map<ISerDesHookType, Set<Class<?>>> whitelist;
     static Set<Class<?>> unknown;
 
-    static ArrayList<ISerDesFilter> filters;
+    static CopyOnWriteArrayList<ISerDesFilter> filters;
 
     static Set<ISerDesHookType> hookTypes;
 
     static {
-        filters = new ArrayList<ISerDesFilter>();
+        filters = new CopyOnWriteArrayList<ISerDesFilter>();
         optimisedLookup = new ConcurrentHashMap<ISerDesHookType, Map<Class<?>, ISerDesFilter>>();
         whitelist = new ConcurrentHashMap<ISerDesHookType, Set<Class<?>>>();
         unknown = ConcurrentHashMap.newKeySet();

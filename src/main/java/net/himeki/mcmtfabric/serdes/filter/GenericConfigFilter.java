@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.regex.Pattern;
 
 public class GenericConfigFilter implements ISerDesFilter {
@@ -40,7 +41,7 @@ public class GenericConfigFilter implements ISerDesFilter {
         primeOpts = primePool.compileOptions(cfg.getPoolParams());
         if (cfg.getWhitelist() != null) {
             whitelist   = ConcurrentHashMap.newKeySet();
-            wcWhitelist = new ArrayList<String>();
+            wcWhitelist =new CopyOnWriteArrayList<String>();;
             for (String s : cfg.getWhitelist()) {
                 try {
                     Class<?> clz = Class.forName(s);
@@ -54,7 +55,7 @@ public class GenericConfigFilter implements ISerDesFilter {
         }
         if (cfg.getBlacklist() != null) {
             blacklist   = ConcurrentHashMap.newKeySet();
-            wcBlacklist = new ArrayList<String>();
+            wcBlacklist = new CopyOnWriteArrayList<>();;
             for (String s : cfg.getBlacklist()) {
                 try {
                     Class<?> clz = Class.forName(s);
