@@ -126,7 +126,7 @@ public class ParallelProcessor {
                 }catch (Exception e){
                     String eMessage = e.getMessage();
                     LOGGER.error("MCMT捕捉到在 世界Tick线程:"+Thread.currentThread().getName()+" 抛出异常:"+e.getClass().getName()+":"+eMessage);
-                    //throw e;
+                    // throw e;
                 }finally {
                     p.arriveAndDeregister();
                     currentWorlds.decrementAndGet();
@@ -186,10 +186,15 @@ public class ParallelProcessor {
                 } else {
                     try {
                         entityIn.tick();
-                    }catch (Exception e){
+                    }catch (NullPointerException e){
+                        LOGGER.error("MCMT捕捉到在 实体Tick线程:"+Thread.currentThread().getName()+"有单独的空指针异常，可能是实体出了点小问题，如果有假死的实体，重启服务器，大概率能解决。");
+                        e.printStackTrace();
+                    }
+                    catch (Exception e){
                         String eMessage = e.getMessage();
                         LOGGER.error("MCMT捕捉到在 实体Tick线程:"+Thread.currentThread().getName()+" 抛出异常:"+e.getClass().getName()+":"+eMessage);
                         //throw e;
+                        //e.printStackTrace();
                     }
                 }
             } finally {

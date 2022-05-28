@@ -5,12 +5,14 @@
   "mixins": [
     "ChunkHolderMixin",
     "ChunkTicketManagerMixin",
+    "DamageTrackerMixin",
     "EntityIndexMixin",
     "EntityListMixin",
     "FastUtilsMixin",
     "LevelPropagatorMixin",
     "LockHelperMixin",
     "MinecraftServerMixin",
+    "PathMinHeapMixin",
     "RegistryMixin",
     "SectionedEntityCacheMixin",
     "SerializingRegionBasedStorageMixin",
@@ -23,7 +25,9 @@
     "UtilMixin",
     "WorldMixin",
     "WorldTickSchedulerMixin",
-    "ae2.PlatformMixin"
+    "ae2.PlatformMixin",
+    "tech.CableBlockEntityMixin",
+    "tech.CableTickManagerMixin"
   ],
   "client": [
   ],
