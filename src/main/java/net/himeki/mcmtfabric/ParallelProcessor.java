@@ -123,10 +123,17 @@ public class ParallelProcessor {
                 try {
                     currentWorlds.incrementAndGet();
                     serverworld.tick(hasTimeLeft);
+                }catch(IllegalArgumentException e){
+                    if(MCMT.config.logWorldException) {
+                        LOGGER.warn("MCMT捕捉到在 世界Tick线程:" + Thread.currentThread().getName() + "有线程安全报错，请向MCMTCE作者反馈。");
+                        e.printStackTrace();
+                    }
                 }catch (Exception e){
                     String eMessage = e.getMessage();
-                    LOGGER.error("MCMT捕捉到在 世界Tick线程:"+Thread.currentThread().getName()+" 抛出异常:"+e.getClass().getName()+":"+eMessage);
-                    // throw e;
+                    if(MCMT.config.logWorldException) {
+                        LOGGER.error("MCMT捕捉到在 世界Tick线程:" + Thread.currentThread().getName() + " 抛出异常:" + e.getClass().getName() + ":" + eMessage);
+                        e.printStackTrace();
+                    }
                 }finally {
                     p.arriveAndDeregister();
                     currentWorlds.decrementAndGet();
@@ -184,18 +191,23 @@ public class ParallelProcessor {
                 if (filter != null) {
                     filter.serialise(entityIn::tick, entityIn, entityIn.getBlockPos(), serverworld, SerDesHookTypes.EntityTick);
                 } else {
-                    try {
-                        entityIn.tick();
-                    }catch (NullPointerException e){
-                        LOGGER.error("MCMT捕捉到在 实体Tick线程:"+Thread.currentThread().getName()+"有单独的空指针异常，可能是实体出了点小问题，如果有假死的实体，重启服务器，大概率能解决。");
-                        e.printStackTrace();
-                    }
-                    catch (Exception e){
-                        String eMessage = e.getMessage();
-                        LOGGER.error("MCMT捕捉到在 实体Tick线程:"+Thread.currentThread().getName()+" 抛出异常:"+e.getClass().getName()+":"+eMessage);
-                        //throw e;
-                        //e.printStackTrace();
-                    }
+                    entityIn.tick();
+                }
+            }catch (NullPointerException e){
+                if(MCMT.config.logEntityException) {
+                    LOGGER.warn("MCMT捕捉到在 实体Tick线程:" + Thread.currentThread().getName() + "有单独的空指针异常，可能是实体出了点小问题，如果有假死的实体，重启服务器，大概率能解决。");
+                    e.printStackTrace();
+                }
+            }catch(IllegalArgumentException e){
+                if(MCMT.config.logEntityException) {
+                    LOGGER.warn("MCMT捕捉到在 实体Tick线程:" + Thread.currentThread().getName() + "有线程安全报错，请向MCMTCE作者反馈。");
+                    e.printStackTrace();
+                }
+            } catch (Exception e){
+                if(MCMT.config.logEntityException) {
+                    String eMessage = e.getMessage();
+                    LOGGER.error("MCMT捕捉到在 实体Tick线程:" + Thread.currentThread().getName() + " 抛出异常:" + e.getClass().getName() + ":" + eMessage);
+                    e.printStackTrace();
                 }
             } finally {
                 currentEnts.decrementAndGet();
@@ -222,7 +234,18 @@ public class ParallelProcessor {
             try {
                 currentEnvs.incrementAndGet();
                 world.tickChunk(chunk, k);
-            } finally {
+            }catch(IllegalArgumentException e){
+                if(MCMT.config.logChunkException) {
+                    LOGGER.warn("MCMT捕捉到在 区块Tick线程:" + Thread.currentThread().getName() + "有线程安全报错，请向MCMTCE作者反馈。");
+                    e.printStackTrace();
+                }
+            }catch (Exception e){
+                if(MCMT.config.logChunkException) {
+                    String eMessage = e.getMessage();
+                    LOGGER.error("MCMT捕捉到在 区块Tick线程:" + Thread.currentThread().getName() + " 抛出异常:" + e.getClass().getName() + ":" + eMessage);
+                    e.printStackTrace();
+                }
+            }finally {
                 currentEnvs.decrementAndGet();
                 p.arriveAndDeregister();
                 if (config.opsTracing) currentTasks.remove(finalTaskName);
@@ -301,7 +324,7 @@ public class ParallelProcessor {
 				/* */
             }
             if (!isTicking.get()) {
-                LOGGER.fatal("Block updates outside of tick");
+                LOGGER.fatal("阻止tick以外的更新.");
             }
             bed.remove();
         }

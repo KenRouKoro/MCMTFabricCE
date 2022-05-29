@@ -9,6 +9,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+//这里使得AE2项目组编写的验证是否为服务线程正常化。
+//Here makes the verification written by the AE2 project team to normalize for server threads.
+
 @Mixin(Platform.class)
 public class PlatformMixin {
     @Inject( method = "isServer",at = @At("HEAD"),cancellable = true,remap = false)

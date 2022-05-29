@@ -24,7 +24,7 @@ public class MCMT implements ModInitializer {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
         // However, some things (like resources) may still be uninitialized.
         // Proceed with mild caution.
-        LOGGER.info("Initializing MCMTCE...");
+        LOGGER.info("初始化MCMTCE...");
         ConfigHolder<GeneralConfig> holder = AutoConfig.register(GeneralConfig.class, Toml4jConfigSerializer::new);
         holder.registerLoadListener((manager, data) -> {
             holder.getConfig().loadTELists();
@@ -41,7 +41,7 @@ public class MCMT implements ModInitializer {
         SerDesRegistry.init();
 
 
-        LOGGER.info("MCMTCE Setting up threadpool...");
+        LOGGER.info("MCMTCE正在配置线程池...");
         ParallelProcessor.setupThreadPool(GeneralConfig.getParallelism());
 
 
