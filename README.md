@@ -6,7 +6,7 @@ This mod is based on the amazing work on [JMT-MCMT](https://github.com/jediminer
 # Notice
 This project is in its earlier stage. Any contribution to the original author is welcome.
 
-这个项目还处于早期编写阶段，欢迎给原作者赞助。
+这个项目还处于早期阶段，欢迎给原作者赞助。
 
 # Compatibility Warning
 This project is very easy to conflict with other fabricmod. You have been warned.
@@ -16,9 +16,9 @@ This project is very easy to conflict with other fabricmod. You have been warned
 | FabricMod                | State 状态                      |
 |--------------------------|-------------------------------|
 | C2ME                     | Completely incompatible 完全不兼容 |
-| Tech Reborn              | Low compatible 低兼容            |
 | lithium-fabric           | Partially compatible 部分兼容     |
-| Indrev                   | Partially compatible 部分兼容     |
+| Indrev                   | High compatible 高兼容           |
+| Tech Reborn              | High compatible 高兼容           |
 | BCLlib & BetterEnd       | Fully compatible 完全兼容         |
 | BYG                      | Fully compatible 完全兼容         |
 | Agriculture & Food       | Fully compatible 完全兼容         |
