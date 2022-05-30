@@ -296,7 +296,7 @@ public class ParallelProcessor {
                     tte.tick();
                 }
             } catch (Exception e) {
-                System.err.println("Exception ticking TE at " + tte.getPos());
+                LOGGER.error("在tick TE时发生异常，异常点位于：" + tte.getPos());
                 e.printStackTrace();
             } finally {
                 currentTEs.decrementAndGet();

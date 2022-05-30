@@ -26,8 +26,10 @@
     "WorldMixin",
     "WorldTickSchedulerMixin",
     "ae2.PlatformMixin",
+    "fabric.SnapshotParticipantMixin",
     "tech.CableBlockEntityMixin",
-    "tech.CableTickManagerMixin"
+    "tech.CableTickManagerMixin",
+    "tech.SimpleSidedEnergyContainerMixin"
   ],
   "client": [
   ],

@@ -3,7 +3,6 @@ package net.himeki.mcmtfabric.mixin.ae2;
 import appeng.core.AppEng;
 import appeng.util.Platform;
 import net.himeki.mcmtfabric.ParallelProcessor;
-import org.checkerframework.checker.units.qual.A;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
