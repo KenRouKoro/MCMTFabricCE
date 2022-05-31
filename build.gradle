@@ -28,6 +28,23 @@ repositories {
         }
     }
     mavenCentral()
+    maven { url = "https://api.modrinth.com/maven" }
+    maven { url = "https://cursemaven.com" }
+    maven { url = "https://maven.parchmentmc.org" }
+    maven { url = "https://maven.fabricmc.net/" }
+    maven { url = "https://maven.tterrag.com/" }
+    maven { url = "https://storage.googleapis.com/devan-maven/" }
+    maven { url = "https://maven.shedaniel.me/" }
+    maven { url = "https://aperlambda.github.io/maven" }
+    maven { url = "https://ladysnake.jfrog.io/artifactory/mods" }
+    maven { url = "https://maven.kotlindiscord.com/repository/terraformers/" }
+    maven { url = "https://mvn.devos.one/releases/" }
+    maven { url = "https://mvn.devos.one/snapshots/" }
+    maven { url = "https://maven.terraformersmc.com/" }
+    maven { url = "https://maven.cafeteria.dev" }
+    maven { url = "https://jitpack.io/" }
+    maven { url = "https://maven.jamieswhiteshirt.com/libs-release" }
+    maven { url = "https://maven.gegy.dev" }
 
 }
 
@@ -40,6 +57,7 @@ dependencies {
     compileOnly "appeng:appliedenergistics2:11.0.0-alpha.5"
     modImplementation "RebornCore:RebornCore-unknown:5.2.0+local"
     modImplementation "TechReborn:TechReborn-unknown:5.2.0+local"
+    modImplementation "com.simibubi:CreateFabric:mc1.18.2_v0.4.1"
     //compile fileTree(dir:'lib',includes:['*jar'])
 
     //implementation fileTree(dir:'lib',includes:['*jar'])
