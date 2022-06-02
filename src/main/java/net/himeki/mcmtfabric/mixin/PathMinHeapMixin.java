@@ -17,4 +17,16 @@ public class PathMinHeapMixin {
             cir.cancel();
         }
     }
+    @Inject(method = "shiftUp",at = @At("HEAD"),cancellable = true)
+    private void shiftUPFix(int index, CallbackInfo ci){
+            if(index ==-1){
+                ci.cancel();
+            }
+    }
+    @Inject(method = "shiftDown",at = @At("HEAD"),cancellable = true)
+    private void shiftDownFix(int index, CallbackInfo ci){
+        if(index ==-1){
+            ci.cancel();
+        }
+    }
 }

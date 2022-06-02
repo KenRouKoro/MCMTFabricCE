@@ -24,7 +24,7 @@ public class GeneralConfig implements ConfigData {
 
     // Parallelism
     @Comment("线程数配置；在标准模式下：将永远不会创建比CPU线程更多的线程（因为这将导致上下文切换紊乱）。\n" +
-            "小于等于1的值都被视为 \"全核心\"。")
+            "小于等于-1的值都被视为 \"全核心\"。")
     public int paraMax = -1;
 
     @Comment("""
