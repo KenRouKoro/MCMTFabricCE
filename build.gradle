@@ -54,10 +54,10 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    compileOnly "appeng:appliedenergistics2:11.0.0-alpha.5"
-    modImplementation "RebornCore:RebornCore-unknown:5.2.0+local"
-    modImplementation "TechReborn:TechReborn-unknown:5.2.0+local"
-    modImplementation "com.simibubi:CreateFabric:mc1.18.2_v0.4.1"
+    //compileOnly "appeng:appliedenergistics2:11.0.0-alpha.5"
+    //modImplementation "RebornCore:RebornCore-unknown:5.2.0+local"
+    //modImplementation "TechReborn:TechReborn-unknown:5.2.0+local"
+    //modImplementation "com.simibubi:CreateFabric:mc1.18.2_v0.4.1"
     //compile fileTree(dir:'lib',includes:['*jar'])
 
     //implementation fileTree(dir:'lib',includes:['*jar'])
@@ -68,10 +68,10 @@ dependencies {
     // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
     // You may need to force-disable transitiveness on them.
 
-    modImplementation "com.terraformersmc:modmenu:3.0.1"
+    modImplementation "com.terraformersmc:modmenu:4.0.0-beta.4"
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
 
-    modApi("me.shedaniel.cloth:cloth-config-fabric:6.2.57") {
+    modApi("me.shedaniel.cloth:cloth-config-fabric:7.0.65") {
         exclude(group: "net.fabricmc.fabric-api")
     }
     modImplementation 'com.electronwill.night-config:toml:3.6.4'
