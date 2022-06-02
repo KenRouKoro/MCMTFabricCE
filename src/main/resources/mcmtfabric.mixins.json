@@ -3,6 +3,7 @@
   "package": "net.himeki.mcmtfabric.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ChainRestrictedNeighborUpdaterMixin",
     "ChunkHolderMixin",
     "ChunkTicketManagerMixin",
     "DamageTrackerMixin",

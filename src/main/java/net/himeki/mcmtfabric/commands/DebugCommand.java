@@ -12,13 +12,11 @@ import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.TagKey;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.chunk.BlockEntityTickInvoker;
-import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
-import net.minecraft.world.gen.feature.StructureFeature;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,7 +41,7 @@ public class DebugCommand {
                     BlockPos bp = loc.toAbsoluteBlockPos(cmdCtx.getSource());
                     ServerWorld sw = cmdCtx.getSource().getWorld();
                     BlockState bs = sw.getBlockState(bp);
-                    LiteralText message = new LiteralText(
+                    MutableText message = Text.literal(
                             "Block at " + bp + " is " + bs.getBlock().getName());
                     cmdCtx.getSource().sendFeedback(message, true);
                     System.out.println(message.toString());
@@ -56,14 +54,14 @@ public class DebugCommand {
                     BlockState bs = sw.getBlockState(bp);
                     BlockEntity te = sw.getBlockEntity(bp);
                     if (te == null) {
-                        LiteralText message = new LiteralText(
+                        MutableText message = Text.literal(
                                 "Block at " + bp + " is " + bs.getBlock().getName() + " has no NBT");
                         cmdCtx.getSource().sendFeedback(message, true);
                         return 1;
                     }
                     NbtCompound nbt = te.toInitialChunkDataNbt();
                     String nbtStr = nbt.toString();
-                    LiteralText message = new LiteralText(
+                    MutableText message = Text.literal(
                             "Block at " + bp + " is " + bs.getBlock().getName() + " with TE NBT:");
                     cmdCtx.getSource().sendFeedback(message, true);
                     cmdCtx.getSource().sendFeedback(Text.of(nbtStr), true);
@@ -79,11 +77,11 @@ public class DebugCommand {
                     BlockEntity te = sw.getBlockEntity(bp);
                     if (te != null && ConfigCommand.isTickableBe(te)) {
                         ((BlockEntityTickInvoker) te).tick();
-                        LiteralText message = new LiteralText(
+                        MutableText message = Text.literal(
                                 "Ticked " + te.getClass().getName() + " at " + bp);
                         cmdCtx.getSource().sendFeedback(message, true);
                     } else {
-                        LiteralText message = new LiteralText("No tickable TE at " + bp);
+                        MutableText message = Text.literal("No tickable TE at " + bp);
                         cmdCtx.getSource().sendError(message);
                     }
                     return 1;
@@ -115,7 +113,7 @@ public class DebugCommand {
                     });
 
 
-                    LiteralText message = new LiteralText("Classpath Dumped to: " + base.toAbsolutePath().toString());
+                    MutableText message = Text.literal("Classpath Dumped to: " + base.toAbsolutePath().toString());
                     cmdCtx.getSource().sendFeedback(message, true);
                     System.out.println(message.toString());
                     return 1;

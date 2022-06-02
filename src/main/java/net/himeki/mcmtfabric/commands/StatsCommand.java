@@ -7,7 +7,8 @@ import net.himeki.mcmtfabric.ParallelProcessor;
 import net.himeki.mcmtfabric.config.GeneralConfig;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,7 +25,7 @@ public class StatsCommand {
             return 1;
         })).executes(cmdCtx -> {
             if (!threadStats) {
-                LiteralText message = new LiteralText("Stat calcs are disabled so stats are out of date");
+                MutableText message = Text.literal("Stat calcs are disabled so stats are out of date");
                 cmdCtx.getSource().sendFeedback(message, true);
             }
             StringBuilder messageString = new StringBuilder(
@@ -33,14 +34,14 @@ public class StatsCommand {
             messageString.append(" Entity:" + mean(maxEntities, liveValues));
             messageString.append(" TE:" + mean(maxTEs, liveValues));
             messageString.append(" Env:" + mean(maxEnvs, liveValues) + ")");
-            LiteralText message = new LiteralText(messageString.toString());
+            MutableText message = Text.literal(messageString.toString());
             cmdCtx.getSource().sendFeedback(message, true);
             return 1;
         }).then(literal("toggle").requires(cmdSrc -> {
             return cmdSrc.hasPermissionLevel(2);
         }).executes(cmdCtx -> {
             threadStats = !threadStats;
-            LiteralText message = new LiteralText("Stat calcs are " +
+            MutableText message = Text.literal("Stat calcs are " +
                     (!threadStats ? "disabled" : "enabled") + "!");
             cmdCtx.getSource().sendFeedback(message, true);
             return 1;
@@ -48,13 +49,13 @@ public class StatsCommand {
             return cmdSrc.hasPermissionLevel(2);
         }).executes(cmdCtx -> {
             doLogging = true;
-            LiteralText message = new LiteralText("Logging started!");
+            MutableText message = Text.literal("Logging started!");
             cmdCtx.getSource().sendFeedback(message, true);
             return 1;
         })).then(literal("stoplog").requires(cmdSrc -> {
             return cmdSrc.hasPermissionLevel(2);
         }).executes(cmdCtx -> {
-            LiteralText message = new LiteralText("Logging stopping...");
+            MutableText message = Text.literal("Logging stopping...");
             cmdCtx.getSource().sendFeedback(message, true);
             doLogging = false;
             return 1;
