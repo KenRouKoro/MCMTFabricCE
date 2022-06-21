@@ -12,25 +12,6 @@ This project is in its earlier stage. Any contribution to the original author is
 This project is very easy to conflict with other fabricmod. You have been warned.
 
 本项目极易与其他FabricMod冲突，您已经被警告过了。
-### Known Compatibility State 已知兼容性状态
-| FabricMod                | State 状态                      |
-|--------------------------|-------------------------------|
-| C2ME                     | Completely incompatible 完全不兼容 |
-| lithium-fabric           | Partially compatible 部分兼容     |
-| Indrev                   | High compatible 高兼容           |
-| Tech Reborn              | High compatible 高兼容           |
-| BCLlib & BetterEnd       | Fully compatible 完全兼容         |
-| BYG                      | Fully compatible 完全兼容         |
-| Agriculture & Food       | Fully compatible 完全兼容         |
-| Create Fabric Version    | Fully compatible 完全兼容         |
-| MTR                      | Fully compatible 完全兼容         |
-| Starlight                | Fully compatible 完全兼容         |
-| musketmod - Koro Version | Fully compatible 完全兼容         |
-| KoroWorld All            | Fully compatible 完全兼容         |
-| AE2                      | Fully compatible 完全兼容         |
-| Modern-Industrialization | Fully compatible 完全兼容         |
-| REI                      | Fully compatible 完全兼容         |
-
 This project will not be the forge version again.
 
 这个项目不会有forge分支。
