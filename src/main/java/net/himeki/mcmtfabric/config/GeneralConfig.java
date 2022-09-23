@@ -109,10 +109,10 @@ public class GeneralConfig implements ConfigData {
     public boolean logEntityException = false;
 
     @Comment("设置是否打印世界异常报告")
-    public boolean logWorldException = true;
+    public boolean logWorldException = false;
 
     @Comment("设置是否打印区块异常报告")
-    public boolean logChunkException = true;
+    public boolean logChunkException = false;
 
 
     public enum ParaMaxMode {
